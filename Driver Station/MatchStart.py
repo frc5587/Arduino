@@ -13,8 +13,7 @@ ser = serial.Serial("COM4", 9600)   # open serial port that Arduino is using
 dt = NetworkTables.getTable("dataTable")
 
 while True:
-    if dt.getBoolean("Match Started", None):
-        print(dt.getBoolean("Match Started", None))
+    if dt.getBoolean("Match Started", False):
         print ("Sending serial data")
         time.sleep(2)
         ser.write(b"s")

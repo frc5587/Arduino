@@ -7,12 +7,12 @@
 
 // Highest possible height of the elevator in inches
 int maxElevatorHeight = 40;
-int red = 10;
-int green = 9;
+int red = 9;
+int green = 10;
 int blue = 11;
 int pins[] = {red, green, blue};
 int heightLED = 0;
-
+char color;
 CRGB leds[NUM_LEDS];
 
 union {
@@ -40,7 +40,7 @@ void receiveEvent() {
 //                    Serial.println(recieved);
          if(recieved == 'u'){
             aColor = Wire.read() & 0xFF;
-            Serial.println(aColor);
+            //Serial.println(aColor);
             displayUnderLightColor(aColor);
             
          }else if(recieved == 'e') {
@@ -64,14 +64,17 @@ void displayUnderLightColor(char allianceColor){
            analogWrite(blue, 255);
       }else if(allianceColor == 'b'){
            analogWrite(blue, 255);
+           color = 'b';
       }else if(allianceColor == 'r'){
            analogWrite(red, 255);
-      }
+           color = 'r';
+      }    
    }
 }
 
 void displayElevatorHeight(uint32_t height, char colorScheme){
          heightLED = map(height,0,maxElevatorHeight,6,NUM_LEDS/2);  
+         Serial.println(heightLED);
 }
 
 void clearPins(){
@@ -81,25 +84,49 @@ void clearPins(){
 }
 
 void loop(){
-   double loopSize = 255/(34);
-    for(int i = 0; i<=NUM_LEDS/2;i++){
-        leds[i] = CHSV((int)(i * loopSize) % 255,255, 255);
-        leds[heightLED] = CRGB::Green;
-        leds[heightLED + 1] = CRGB::Green;
-        leds[heightLED - 1] = CRGB::Green;
-        leds[heightLED - 2] = CRGB::White;
-        leds[heightLED + 2] = CRGB::White;
-        leds[heightLED - 3] = CRGB::White;
-        leds[heightLED + 3] = CRGB::White;
+  if(color == 'b'){
+    for(int i = 0; i<= NUM_LEDS/2 ;i++){
+        leds[i] = CRGB::Blue;
+        leds[heightLED] = CRGB::Red;
+        leds[heightLED + 1] = CRGB::Red;
+        leds[heightLED - 1] = CRGB::Red;
+        leds[heightLED - 2] = CRGB::Red;
+        leds[heightLED + 2] = CRGB::Red;
+        leds[heightLED - 3] = CRGB::Red;
+        leds[heightLED + 3] = CRGB::Red;
 
-        leds[NUM_LEDS - i] = CHSV((int)(i * loopSize) % 255,255, 255);
-        leds[NUM_LEDS - heightLED] = CRGB::Green;
-        leds[NUM_LEDS - heightLED + 1] = CRGB::Green;
-        leds[NUM_LEDS - heightLED - 1] = CRGB::Green;
-        leds[NUM_LEDS - heightLED - 2] = CRGB::White;
-        leds[NUM_LEDS - heightLED + 2] = CRGB::White;
-        leds[NUM_LEDS - heightLED - 3] = CRGB::White;
-        leds[NUM_LEDS - heightLED + 3] = CRGB::White;
+        leds[NUM_LEDS - i] = CRGB::Blue;
+        leds[NUM_LEDS - heightLED] = CRGB::Red;
+        leds[NUM_LEDS - heightLED + 1] = CRGB::Red;
+        leds[NUM_LEDS - heightLED - 1] = CRGB::Red;
+        leds[NUM_LEDS - heightLED - 2] = CRGB::Red;
+        leds[NUM_LEDS - heightLED + 2] = CRGB::Red;
+        leds[NUM_LEDS - heightLED - 3] = CRGB::Red;
+        leds[NUM_LEDS - heightLED + 3] = CRGB::Red;
         FastLED.show();
     }
+  }
+
+   else if(color == 'r'){
+    for(int i = 0; i<= NUM_LEDS/2 ;i++){
+        leds[i] = CRGB::Red;
+        leds[heightLED] = CRGB::Blue;
+        leds[heightLED + 1] = CRGB::Blue;
+        leds[heightLED - 1] = CRGB::Blue;
+        leds[heightLED - 2] = CRGB::Blue;
+        leds[heightLED + 2] = CRGB::Blue;
+        leds[heightLED - 3] = CRGB::Blue;
+        leds[heightLED + 3] = CRGB::Blue;
+
+        leds[NUM_LEDS - i] = CRGB::Red;
+        leds[NUM_LEDS - heightLED] = CRGB::Blue;
+        leds[NUM_LEDS - heightLED + 1] = CRGB::Blue;
+        leds[NUM_LEDS - heightLED - 1] = CRGB::Blue;
+        leds[NUM_LEDS - heightLED - 2] = CRGB::Blue;
+        leds[NUM_LEDS - heightLED + 2] = CRGB::Blue;
+        leds[NUM_LEDS - heightLED - 3] = CRGB::Blue;
+        leds[NUM_LEDS - heightLED + 3] = CRGB::Blue;
+        FastLED.show();
+    }
+  }
 }
