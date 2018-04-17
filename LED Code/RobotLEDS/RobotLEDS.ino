@@ -7,9 +7,9 @@
 
 // Highest possible height of the elevator in inches
 int maxElevatorHeight = 40;
-int red = 9;
-int green = 10;
-int blue = 11;
+int red = 5;
+int green = 9;
+int blue = 10;
 int pins[] = {red, green, blue};
 int heightLED = 0;
 char color;
@@ -37,7 +37,7 @@ void receiveEvent() {
     char recieved,aColor;
       while(Wire.available()){
         recieved = Wire.read() & 0xFF;
-//                    Serial.println(recieved);
+                  Serial.println(recieved);
          if(recieved == 'u'){
             aColor = Wire.read() & 0xFF;
             //Serial.println(aColor);
@@ -74,7 +74,7 @@ void displayUnderLightColor(char allianceColor){
 
 void displayElevatorHeight(uint32_t height, char colorScheme){
          heightLED = map(height,0,maxElevatorHeight,6,NUM_LEDS/2);  
-         Serial.println(heightLED);
+         //Serial.println(heightLED);
 }
 
 void clearPins(){
