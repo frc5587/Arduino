@@ -16,11 +16,11 @@ I2CTest is a simple sketch for testing to see that there is communication betwee
 
 First you must install XInput from the library manager.
 
-Then you need to unzip ![this](https://github.com/dmadison/ArduinoXInput_AVR/releases/tag/v1.0.0) into (arduino installation) --> hardware (e.i. on arch its `/opt/share/arduino/hardware`). (restart arduino IDE)
+Then you need to unzip ![this](https://github.com/dmadison/ArduinoXInput_AVR/releases/tag/v1.0.0) into (arduino installation) --> hardware (e.i. on arch its `/opt/share/arduino/hardware`). (then the restart arduino IDE)
 
-After that, when you upload a sketch you should select the board and "w/ XInput" e.i. "leonardo w/ XInput" as your board, enable show verbose output, then upload your first scetch using XInput.h
+After that, when you upload a sketch you should select the board and "w/ XInput" e.i. `leonardo w/ XInput` as your board, enable show verbose output, then upload your first sketch
 
-Finally when you wan to upload subsequet sketches you **MUST** select the same board as above (but no port will show up), then hit upload and when the thingy says "uploading..." hit the restart button on the arduino **TWICE** and even though it will say like no port found, if you have verbose output enabled it will say "avrdude done. thank you!" after a bit. once you do that you're done.
+Finally, when you want to upload subsequent sketches you **MUST** select the same board as above (but no port will show up), then hit upload and when the thingy says "uploading..." hit the restart button on the arduino **TWICE** and even though it will say like no port found, if you have verbose output enabled it will say `avrdude done. thank you!` after a bit. Once you do that you're done!
 
 ## LEDS
 
