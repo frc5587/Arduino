@@ -16,7 +16,7 @@ I2CTest is a simple sketch for testing to see that there is communication betwee
 
 First you must install XInput from the library manager.
 
-Then you need to unzip ![this](https://github.com/dmadison/ArduinoXInput_AVR/releases/tag/v1.0.0) into (arduino installation) --> hardware (e.i. on arch its `/opt/share/arduino/hardware`). (then the restart arduino IDE)
+Then you need to unzip ![this](https://github.com/dmadison/ArduinoXInput_AVR/releases) into (arduino installation) --> hardware (e.i. on arch its `/opt/share/arduino/hardware`). (then the restart arduino IDE)
 
 After that, when you upload a sketch you should select the board and "w/ XInput" e.i. `leonardo w/ XInput` as your board, enable show verbose output, then upload your first sketch
 
